@@ -1,4 +1,4 @@
-package com.aill.serialport;
+package com.aill.androidserialport;
 
 import android.util.Log;
 
@@ -10,6 +10,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Created on 2018/10/7
+ *
+ * @author AIll.
+ * @description 串口操作类
+ */
 public class SerialPort {
 
     private static final String TAG = "SerialPort";
@@ -22,14 +28,14 @@ public class SerialPort {
     /**
      * 有些设备su路径是/system/xbin/su
      */
-    private String suPath = "/system/bin/su";
+    private static String mSuPath = "/system/bin/su";
 
     static {
         System.loadLibrary("android_serial_port");
     }
 
-    public void setSuPath(String suPath) {
-        this.suPath = suPath;
+    public static void setSuPath(String suPath) {
+        mSuPath = suPath;
     }
 
     public SerialPort(File device, int baudrate, int flags) throws SecurityException, IOException {
@@ -38,7 +44,7 @@ public class SerialPort {
         if (!device.canRead() || !device.canWrite()) {
             try {
                 /* 没有读/写权限，尝试对文件进行提权 */
-                Process su = Runtime.getRuntime().exec(suPath);
+                Process su = Runtime.getRuntime().exec(mSuPath);
                 String cmd = "chmod 666 " + device.getAbsolutePath() + "\n" + "exit\n";
                 su.getOutputStream().write(cmd.getBytes());
                 if ((su.waitFor() != 0) || !device.canRead() || !device.canWrite()) {
@@ -56,6 +62,12 @@ public class SerialPort {
         }
         mFileInputStream = new FileInputStream(mFd);
         mFileOutputStream = new FileOutputStream(mFd);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }).start();
     }
 
     /**
@@ -63,7 +75,7 @@ public class SerialPort {
      *
      * @param path     设备路径
      * @param baudrate 波特率
-     * @param flags    标记
+     * @param flags
      * @return FileDescriptor
      */
     private native static FileDescriptor open(String path, int baudrate, int flags);

@@ -1,4 +1,4 @@
-package com.aill.serialport;
+package com.aill.androidserialport;
 
 import java.io.File;
 import java.io.FileReader;
@@ -7,6 +7,12 @@ import java.io.LineNumberReader;
 import java.util.Iterator;
 import java.util.Vector;
 
+/**
+ * Created on 2018/10/7
+ *
+ * @author AIll.
+ * @description 用于查找设备下所有串口路径
+ */
 public class SerialPortFinder {
 
     private static final String TAG = "SerialPort";

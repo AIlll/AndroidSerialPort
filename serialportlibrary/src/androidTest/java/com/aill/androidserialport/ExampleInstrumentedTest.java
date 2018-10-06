@@ -1,4 +1,4 @@
-package com.aill.serialport;
+package com.aill.androidserialport;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

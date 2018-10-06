@@ -1,4 +1,4 @@
-package com.aill.serialport;
+package com.aill.androidserialport;
 
 public class ByteUtil {
     private static char[] hexArray = "0123456789ABCDEF".toCharArray();
