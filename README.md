@@ -27,8 +27,8 @@ data[0] = ...;
 data[1] = ...;
 data[x] = ...;
 //写入数据
-mLockControlBoardOS.write(data);
-mLockControlBoardOS.flush();
+outputStream.write(data);
+outputStream.flush();
 ```
 4. 读取串口数据
 
