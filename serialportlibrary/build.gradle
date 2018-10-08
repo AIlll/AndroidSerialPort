@@ -7,9 +7,9 @@ android {
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0.5"
+        versionName "1.0.8"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -31,26 +31,26 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+//    implementation 'com.android.support:appcompat-v7:27.1.1'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-apply plugin: 'com.novoda.bintray-release'//添加
-//apply plugin: "guru.stefma.bintrayrelease"//添加
-//项目主页
+apply plugin: 'com.novoda.bintray-release'
+//apply plugin: "guru.stefma.bintrayrelease"
+
 def siteUrl = 'https://github.com/AIlll/AndroidSerialPort'
-//version = "1.0.3"
+//version = "1.0.5"
 //group = "com.aill"
 publish {
-    repoName = 'IOTMaven'//远程仓库名字,不指明，默认是上传到maven
-    userOrg = 'aill'//bintray.com的用户名
-    groupId = 'com.aill'//jcenter上的路径
-    artifactId = 'AndroidSerialPort'//项目名称
-    publishVersion = '1.0.5'//版本号
-    desc = 'Android Serial Port Android串口通信'//描述，不重要
-    website = siteUrl//项目主页
+    repoName = 'IOTMaven'
+    userOrg = 'aill'
+    groupId = 'com.aill'
+    artifactId = 'AndroidSerialPort'
+    publishVersion = '1.0.8'
+    desc = 'Android Serial Port Android串口通信'
+    website = siteUrl
 }
 tasks.withType(Javadoc) {//防止编码问题
     options.addStringOption('Xdoclint:none', '-quiet')

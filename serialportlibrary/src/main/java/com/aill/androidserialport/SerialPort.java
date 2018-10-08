@@ -1,5 +1,6 @@
 package com.aill.androidserialport;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.File;
@@ -35,11 +36,13 @@ public class SerialPort {
     }
 
     public static void setSuPath(String suPath) {
+        if (TextUtils.isEmpty(suPath)) {
+            return;
+        }
         mSuPath = suPath;
     }
 
     public SerialPort(File device, int baudrate, int flags) throws SecurityException, IOException {
-
         /* 检查访问权限 */
         if (!device.canRead() || !device.canWrite()) {
             try {
@@ -62,12 +65,6 @@ public class SerialPort {
         }
         mFileInputStream = new FileInputStream(mFd);
         mFileOutputStream = new FileOutputStream(mFd);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        }).start();
     }
 
     /**
@@ -85,9 +82,6 @@ public class SerialPort {
      */
     public native void close();
 
-    /**
-     * 获取输入输出流
-     */
     public InputStream getInputStream() {
         return mFileInputStream;
     }
@@ -95,19 +89,4 @@ public class SerialPort {
     public OutputStream getOutputStream() {
         return mFileOutputStream;
     }
-
-    /**
-     * 关闭IO流
-     */
-    public void closeIOStream() {
-        try {
-            mFileInputStream.close();
-            mFileOutputStream.close();
-        } catch (IOException e) {
-            Log.i(TAG, e.getMessage());
-        }
-        mFileInputStream = null;
-        mFileOutputStream = null;
-    }
-
 }
