@@ -1,12 +1,13 @@
 # AndroidSerialPort
 Android 串口通信，基于[谷歌官方android-serialport-api](https://github.com/cepr/android-serialport-api)编译
 
+![download](https://api.bintray.com/packages/aill/IOTMaven/AndroidSerialPort/images/download.svg)
 
 ### 使用说明
 
 1. 在Module下的 build.gradle 中添加
 ```java
-implementation 'com.aill:AndroidSerialPort:1.0.5'
+implementation 'com.aill:AndroidSerialPort:1.0.8'
 ```
 2. 打开串口
 ```java
