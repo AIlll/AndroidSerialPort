@@ -60,5 +60,5 @@ SerialPort.setSuPath("/system/xbin/su");
 
 <br>
 
->- ByteUtil类：字节工具类，字符串转字节数组，字节数组转字符串
+>- ByteUtil类：工具类，字符串转字节数组，字节数组转字符串
 >- SerialFinder类：用于查找设备下所有串口路径
