@@ -6,10 +6,12 @@ Android 串口通信，基于[谷歌官方android-serialport-api](https://github
 ### 使用说明
 
 1. 在Module下的 build.gradle 中添加
+
 ```java
 implementation 'com.aill:AndroidSerialPort:1.0.8'
 ```
 2. 打开串口
+
 ```java
 /**
  * @param 1 串口路径
@@ -19,6 +21,7 @@ implementation 'com.aill:AndroidSerialPort:1.0.8'
 SerialPort serialPort = new SerialPort(new File("/dev/ttyS1"), 9600, 0);
 ```
 3. 往串口中写入数据
+
 ```java
 //从串口对象中获取输出流
 OutputStream outputStream = serialPort.getOutputStream();
@@ -36,6 +39,7 @@ outputStream.flush();
 读取数据时很可能会遇到分包的情况，即不能一次性读取正确的完整的数据
 
 解决办法：可以在读取到数据时，让读取数据的线程sleep一段时间，等待数据全部接收完，再一次性读取出来。这样应该可以避免大部分的分包情况
+
 ```java
 //从串口对象中获取输入流
 InputStream inputStream = serialPort.getInputStream();
@@ -53,6 +57,7 @@ while (true) {
 5. 修改设备```su```路径
 
 打开串口时，会检测读写权限，当没有权限时，会尝试对其进行提权
+
 ```java
 //默认su路径是/system/bin/su，有些设备su路径是/system/xbin/su
 //在new SerialPort();之前设置su路径
